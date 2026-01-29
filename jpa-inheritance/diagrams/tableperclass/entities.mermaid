@@ -1,0 +1,43 @@
+classDiagram
+    class ParentEntity {
+        -Long id
+        -String name
+    }
+
+    class DirectChildOne {
+        -String childOneName
+        -String propertyOne
+    }
+
+    class SubParent {
+        -List<SubChildOne> subChildOnes
+        -List<SubChildTwo> subChildTwos
+    }
+
+    class SubChildOne {
+        -String shubChildOneName
+        -Double subPrice
+    }
+
+    class SubChildTwo {
+        -String subChilTwoName
+        -Double subPrice
+    }
+
+    class RelationEntity {
+        -Long id
+        -String name
+        -Double price
+        -String type
+        -SubChildOne subChildOne
+        -SubChildTwo subChildTwo
+    }
+
+    ParentEntity <|-- SubParent
+    ParentEntity <|-- DirectChildOne
+    SubParent <|-- SubChildOne
+    SubParent <|-- SubChildTwo
+    RelationEntity "0..1" -- "0..n" SubParent: subChildOne
+    RelationEntity "0..1" -- "0..n" SubParent: subChildTwo
+
+

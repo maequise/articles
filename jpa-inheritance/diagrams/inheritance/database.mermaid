@@ -1,0 +1,41 @@
+erDiagram
+    parent {
+        bigint(20) id PK
+        varchar(50) name
+    }
+
+    direct_child_one {
+        bigint(20) id PK, FK
+        varchar(50) child_one_name
+        varchar(10) property_one
+    }
+
+    sub_parent {
+        bigint(20) id PK, FK
+    }
+
+    sub_child_one {
+        bigint(20) id PK, FK
+        varchar sub_child_one_name
+        double sub_price
+    }
+
+    sub_child_two {
+        bigint(20) id PK, FK
+        varchar sub_child_two_name
+        double sub_price
+    }
+
+    relation {
+        bigint(20) id PK
+        varchar name
+        double price
+        varchar type
+        bigint(20) sub_parent_id FK
+    }
+
+    direct_child_one 0+--1+ parent: fk_direct_child_one_parent
+    sub_parent 0+--1+ parent: fk_sub_parent_parent
+    sub_child_one 0+--1+ sub_parent: fk_sub_child_one_sub_parent
+    sub_child_two 0+--1+ sub_parent: fk_sub_child_two_sub_parent
+    relation 0+--1+ sub_parent: fk_relation_sub_parent

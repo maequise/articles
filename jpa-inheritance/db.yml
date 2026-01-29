@@ -1,0 +1,11 @@
+services:
+  test-db:
+    container_name: test-db
+    image: mariadb:latest
+    environment:
+      MARIADB_ROOT_PASSWORD: test
+      MARIADB_DATABASE: test
+      MARIADB_USER: test
+      MARIADB_PASSWORD: test
+    ports:
+      - "3308:3306"
